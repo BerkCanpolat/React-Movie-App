@@ -46,7 +46,7 @@ const BrandStrip = () => {
   }, []);
 
   return (
-    <div className="relative py-10 w-full overflow-hidden px-2 sm:px-4 md:px-8 lg:px-12 xl:px-16">
+    <div className="relative pt-10 pb-25 w-full overflow-hidden px-2 sm:px-4 md:px-8 lg:px-12 xl:px-16">
 
       {isScrolledLeft && (
         <div className="absolute left-0 top-0 h-full w-40 bg-linear-to-r from-black/95 via-black/80 to-transparent pointer-events-none z-10 transition-opacity duration-500" />
@@ -63,7 +63,7 @@ const BrandStrip = () => {
 
         {isScrolledLeft && (
           <button
-            className="dark:bg-gray-700 md:absolute md:left-5 md:top-13 rounded-full p-1.5 cursor-pointer z-20 transition-opacity duration-500"
+            className="dark:bg-gray-800 absolute left-5 top-13 rounded-full p-1.5 cursor-pointer z-20 transition-opacity duration-500"
             onClick={() => scroll("left")}
           >
             <FaChevronLeft color="white" />
@@ -72,7 +72,7 @@ const BrandStrip = () => {
 
         {isScrolledRight && (
           <button
-            className="dark:bg-gray-700 md:absolute md:right-5 md:top-13 rounded-full p-1.5 cursor-pointer z-20 transition-opacity duration-500"
+            className="dark:bg-gray-800 absolute right-5 top-13 rounded-full p-1.5 cursor-pointer z-20 transition-opacity duration-500"
             onClick={() => scroll("right")}
           >
             <FaChevronRight color="white" />
