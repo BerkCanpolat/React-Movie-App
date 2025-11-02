@@ -1,4 +1,4 @@
-import { bg1, bg2, bg3, bg4, bg5, disneySvg, hboMaxSvgpWhite, m1, m10, m11, m12, m13, m14, m2, m3, m4, m5, m6, m7, m8, m9, marvelSvg, nationalGeopraphicPng, nationalGeopraphicSvg, netflixSvg, paramountPng, pixarSvg } from "../assets/image";
+import { amazonPrime, bg1, bg2, bg3, bg4, bg5, disneySvg, hboMaxSvgpWhite, hulu, m1, m10, m11, m12, m13, m14, m2, m3, m4, m5, m6, m7, m8, m9, marvelSvg, nationalGeopraphicPng, nationalGeopraphicSvg, netflixSvg, paramountPng, pixarPng, pixarSvg, pixarWhiteLogo, warnerBros } from "../assets/image";
 
 export const navLinks = [
     {url: "/", title: "Home"},
@@ -28,11 +28,14 @@ export const mockMovieImage = [
 export const logoImage = [
     {logo: nationalGeopraphicSvg},
     {logo: disneySvg},
-    {logo: pixarSvg},
+    {logo: pixarWhiteLogo},
     {logo: hboMaxSvgpWhite},
     {logo: marvelSvg},
     {logo: paramountPng},
     {logo: netflixSvg},
+    {logo: amazonPrime},
+    {logo: hulu},
+    {logo: warnerBros},
 ];
 
 export const heroMock = [

@@ -7,6 +7,13 @@ import disneyPng from "./logo12.png";
 
 import pixarSvg from "./logo4.svg";
 import pixarPng from "./logo5.png";
+import pixarWhiteLogo from "./pxrwhite.png";
+
+import amazonPrime from "./Amazon.svg";
+
+import hulu from "./hulu.svg";
+
+import warnerBros from "./warnerbros.svg";
 
 import hboMaxPng from "./logo6.png";
 import hboMaxSvg from "./logo7.svg";
@@ -59,6 +66,7 @@ export {
 
     pixarSvg,
     pixarPng,
+    pixarWhiteLogo,
 
     hboMaxPng,
     hboMaxSvg,
@@ -98,5 +106,9 @@ export {
     bg3,
     bg4,
     bg5,
+
+    amazonPrime,
+    hulu,
+    warnerBros
 
 }

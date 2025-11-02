@@ -1,10 +1,10 @@
 import { Link, useLocation } from "react-router-dom";
-import mainLogo from "../assets/mainlogo.png";
+import mainLogo from "../../assets/mainlogo.png";
 import { FaMagnifyingGlass, FaBarsStaggered } from "react-icons/fa6";
 import { useState } from "react";
 import ThemeButton from "./ThemeButton";
 import NavButton from "./NavButton";
-import { navLinks } from "../constants/data";
+import { navLinks } from "../../constants/data";
 
 const Navbar = () => {
   const location = useLocation();

@@ -1,4 +1,4 @@
-import { useTheme } from "../Context/ThemeContext"
+import { useTheme } from "../../Context/ThemeContext"
 import { AiOutlineSun, AiOutlineMoon} from 'react-icons/ai';
 
 
