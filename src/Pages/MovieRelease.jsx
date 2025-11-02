@@ -2,7 +2,7 @@
 
 const MovieRelease = () => {
   return (
-    <div>MovieRelease</div>
+    <div className="bg-black min-h-screen">MovieRelease</div>
   )
 }
 

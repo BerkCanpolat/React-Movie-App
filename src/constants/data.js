@@ -1,4 +1,4 @@
-import { disneySvg, hboMaxSvgpWhite, m1, marvelSvg, nationalGeopraphicPng, nationalGeopraphicSvg, netflixSvg, paramountPng, pixarSvg } from "../assets/image";
+import { bg1, bg2, bg3, bg4, bg5, disneySvg, hboMaxSvgpWhite, m1, m10, m11, m12, m13, m14, m2, m3, m4, m5, m6, m7, m8, m9, marvelSvg, nationalGeopraphicPng, nationalGeopraphicSvg, netflixSvg, paramountPng, pixarSvg } from "../assets/image";
 
 export const navLinks = [
     {url: "/", title: "Home"},
@@ -34,3 +34,11 @@ export const logoImage = [
     {logo: paramountPng},
     {logo: netflixSvg},
 ];
+
+export const heroMock = [
+    {bg: bg1},
+    {bg: bg2},
+    {bg: bg3},
+    {bg: bg4},
+    {bg: bg5},
+]

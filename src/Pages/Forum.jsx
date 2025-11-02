@@ -2,7 +2,7 @@
 
 const Forum = () => {
   return (
-    <div>Forum</div>
+    <div className="bg-black min-h-screen">Forum</div>
   )
 }
 

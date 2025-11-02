@@ -2,7 +2,7 @@
 
 const Discover = () => {
   return (
-    <div>Discover</div>
+    <div className="bg-black min-h-screen">Discover</div>
   )
 }
 

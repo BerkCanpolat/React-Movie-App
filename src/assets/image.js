@@ -26,6 +26,13 @@ import netflixPng from "./logo18.png";
 import netflixSvg from "./logo19.svg";
 import netflixWebp from "./logo20.webp";
 
+//Mock Bg
+import bg1 from "./bg1.png";
+import bg2 from "./bg2.png";
+import bg3 from "./bg3.png";
+import bg4 from "./bg4.png";
+import bg5 from "./bg5.png";
+
 
 // Mock Image
 import m1 from "./m1.png";
@@ -85,4 +92,11 @@ export {
     m12,
     m13,
     m14,
+
+    bg1,
+    bg2,
+    bg3,
+    bg4,
+    bg5,
+
 }

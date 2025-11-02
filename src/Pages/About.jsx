@@ -1,7 +1,7 @@
 
 const About = () => {
   return (
-    <div>About</div>
+    <div className="bg-black min-h-screen">About</div>
   )
 }
 
