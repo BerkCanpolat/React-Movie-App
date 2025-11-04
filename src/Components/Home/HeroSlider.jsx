@@ -32,7 +32,7 @@ const HeroSlider = () => {
 
       <div className="absolute inset-0 bg-linear-to-b from-black/25 via-transparent to-transparent z-0" />
 
-      <div className="absolute inset-0 bg-linear-to-t from-black via-black/60 to-transparent z-0" />
+      <div className="absolute inset-0 bg-linear-to-t from-[#0b0b0b] via-[#0b0b0b]/70 to-transparent z-0" />
 
       <div className="absolute inset-0 bg-black/20 backdrop-brightness-90 mask-[radial-gradient(circle,white_60%,transparent_100%)] z-0" />
 
@@ -64,6 +64,8 @@ const HeroSlider = () => {
         </div>
 
       </div>
+
+      <div className="absolute bottom-0 left-0 w-full h-32 bg-linear-to-b from-transparent to-[#0b0b0b] z-10" />
 
     </div>
   )

@@ -1,78 +1,40 @@
 import { useEffect, useRef, useState } from "react";
 import { logoImage } from "../../constants/data";
 import { FaChevronRight,FaChevronLeft } from 'react-icons/fa6';
+import { useHorizontalScroll } from "../../Hook/useHorizontalScroll";
 
 
 const BrandStrip = () => {
 
-  const sliderRef = useRef(null);
-  const [isScrolling, setIsScrolling] = useState(false);
-  const [isScrolledLeft, setIsScrolledLeft] = useState(false);
-  const [isScrolledRight, setIsScrolledRight] = useState(true);
-
-  const scroll = (direction) => {
-    if (isScrolling) return;
-    setIsScrolling(true);
-    const { current } = sliderRef;
-    const scrollAmount =
-      direction === "left"
-        ? -current.clientWidth * 0.75
-        : current.clientWidth * 0.75;
-
-    current.scrollBy({
-      left: scrollAmount,
-      behavior: "smooth",
-    });
-
-    setTimeout(() => {
-      setIsScrolling(false);
-    }, 500);
-  };
-
-  useEffect(() => {
-    const { current } = sliderRef;
-
-    const handleScroll = () => {
-      const maxScroll = current.scrollWidth - current.clientWidth;
-      const left = current.scrollLeft;
-
-      setIsScrolledLeft(left > 10);
-      setIsScrolledRight(left < maxScroll - 10); 
-    };
-
-    current.addEventListener("scroll", handleScroll);
-    handleScroll();
-    return () => current.removeEventListener("scroll", handleScroll);
-  }, []);
+  const { ref, canScrollLeft, canScrollRight, scroll} = useHorizontalScroll();
 
   return (
-    <div className="relative pt-10 pb-25 w-full overflow-hidden px-2 sm:px-4 md:px-8 lg:px-12 xl:px-16">
+    <div className="relative pt-10 pb-20 w-full overflow-hidden pl-2 sm:pl-4 md:pl-8 lg:pl-12 xl:pl-16 sm:pr-2.5">
 
-      {isScrolledLeft && (
-        <div className="absolute left-0 top-0 h-full w-40 bg-linear-to-r from-black/95 via-black/80 to-transparent pointer-events-none z-10 transition-opacity duration-500" />
-      )}
+      {canScrollLeft && (
+  <div className="absolute left-0 top-0 h-full w-40 bg-linear-to-r dark:from-[#0b0b0b] dark:via-[#0b0b0b]/85 to-transparent pointer-events-none z-10 transition-opacity duration-500 from-[#e8e6e3] via-[#e8e6e3]/90" />
+)}
 
-
-      {isScrolledRight && (
-        <div className="absolute right-0 top-0 h-full w-40 bg-linear-to-l from-black/95 via-black/80 to-transparent pointer-events-none z-10 transition-opacity duration-500" />
-      )}
+{canScrollRight && (
+  <div className="absolute right-0 top-0 h-full w-40 bg-linear-to-l dark:from-[#0b0b0b] dark:via-[#0b0b0b]/85 to-transparent pointer-events-none z-10 transition-opacity duration-500  from-[#e8e6e3] via-[#e8e6e3]/90" />
+)}
 
       
-      <div className="flex items-center gap-10 snap-x space-x-4 overflow-x-hidden no-scrollbar scroll-smooth" ref={sliderRef}>
+      <div className="flex items-center gap-10 snap-x space-x-4 overflow-x-hidden no-scrollbar scroll-smooth" ref={ref}>
 
 
-        {isScrolledLeft && (
+        {canScrollLeft && (
           <button
-            className="dark:bg-gray-800 absolute left-5 top-13 rounded-full p-1.5 cursor-pointer z-20 transition-opacity duration-500"
+            className="dark:bg-gray-800 bg-red-500 absolute left-5 top-18 rounded-full p-1.5 cursor-pointer z-20 transition-opacity duration-500"
             onClick={() => scroll("left")}
           >
             <FaChevronLeft color="white" />
           </button>
         )}
 
-        {isScrolledRight && (
+        {canScrollRight && (
           <button
-            className="dark:bg-gray-800 absolute right-5 top-13 rounded-full p-1.5 cursor-pointer z-20 transition-opacity duration-500"
+            className="dark:bg-gray-800 bg-red-500 absolute right-5 top-18 rounded-full p-1.5 cursor-pointer z-20 transition-opacity duration-500"
             onClick={() => scroll("right")}
           >
             <FaChevronRight color="white" />
@@ -81,8 +43,8 @@ const BrandStrip = () => {
 
       {
         logoImage.map((item,index) => (
-          <div key={index} className="min-w-[200px] shrink-0 w-36 h-12 flex items-center justify-center snap-start">
-            <img src={item.logo} alt="aaa" className="w-full h-full object-contain opacity-90 hover:opacity-100 transition"/>
+          <div key={index} className="min-w-[175px] shrink-0 w-36 h-23 flex items-center justify-center snap-start bg-black rounded-2xl cursor-pointer">
+            <img src={item.logo} alt="aaa" className="max-w-[150px] max-h-[50px] object-contain"/>
 
           </div>
         ))
