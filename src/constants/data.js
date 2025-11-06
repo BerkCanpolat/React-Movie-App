@@ -45,3 +45,11 @@ export const heroMock = [
     {bg: bg4},
     {bg: bg5},
 ]
+
+export const selectedIMG = [
+    {bigBG: bg1, bg: m1},
+    {bigBG: bg2, bg: m2},
+    {bigBG: bg3, bg: m3},
+    {bigBG: bg4, bg: m4},
+    {bigBG: bg5, bg: m5},
+]

@@ -46,7 +46,7 @@ const JustRelease = () => {
           )}
 
           {canScrollLeft && (
-            <SliderBtn children={ <FaChevronLeft color="white" />} onClick={() => scroll("left")} className="left-11.5 top-1/2 -translate-y-1/2 sm:left-20"/>
+            <SliderBtn children={ <FaChevronLeft color="white" />} onClick={() => scroll("left")} className="left-11.5 top-1/2 -translate-y-1/2 sm:left-5"/>
           )}
 
           {mockMovieImage.map((item, index) => (

@@ -9,7 +9,7 @@ const PopularOfWeek = () => {
     const { ref, canScrollLeft, canScrollRight, scroll } = useHorizontalScroll();
 
   return (
-    <div className="relative overflow-hidden pl-2 sm:pl-4 md:pl-8 lg:pl-12 xl:pl-16 sm:pr-2.5">
+    <div className="relative overflow-hidden pl-2 sm:pl-4 md:pl-8 lg:pl-12 xl:pl-16 sm:pr-2.5 mb-15">
       <h1 className="dark:text-white text-black text-3xl mb-9">Popular of the week</h1>
 
       <div className="relative">
