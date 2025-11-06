@@ -8,23 +8,34 @@ const JustRelease = () => {
   const { ref, canScrollLeft, canScrollRight, scroll } = useHorizontalScroll();
 
   return (
-    <div className="relative overflow-hidden pl-2 sm:pl-4 md:pl-8 lg:pl-12 xl:pl-16 sm:pr-2.5">
+    <div className="relative overflow-hidden pl-2 sm:pl-4 md:pl-8 lg:pl-12 xl:pl-16 sm:pr-2.5 mb-25">
       <h1 className="dark:text-white text-black text-3xl mb-9">Just Release</h1>
 
       <div className="relative">
+
         {canScrollLeft && (
-          <div
-            className="absolute left-0 top-0 h-full w-40 bg-linear-to-r dark:from-[#0b0b0b] dark:via-[#0b0b0b]/85 to-transparent pointer-events-none z-10 transition-opacity duration-500 from-[#e8e6e3] via-[#e8e6e3]/90 max-sm:via-[#e8e6e3]/50 
-      max-sm:dark:via-[#0b0b0b]/50 "
-          />
-        )}
+  <div
+    className="absolute left-0 top-0 h-full 
+    w-24 sm:w-32 md:w-36 lg:w-40 
+    bg-linear-to-r 
+    dark:from-[#0b0b0b] dark:via-[#0b0b0b]/80 to-transparent 
+    pointer-events-none z-10 transition-opacity duration-500 
+    from-[#e8e6e3]/80 via-[#e8e6e3]/60
+    max-sm:via-[#e8e6e3]/40 max-sm:dark:via-[#0b0b0b]/40"
+  />
+)}
 
         {canScrollRight && (
-          <div
-            className="absolute right-0 top-0 h-full w-40 bg-linear-to-l dark:from-[#0b0b0b] dark:via-[#0b0b0b]/85 to-transparent pointer-events-none z-10 transition-opacity duration-500  from-[#e8e6e3] via-[#e8e6e3]/90 max-sm:via-[#e8e6e3]/50 
-      max-sm:dark:via-[#0b0b0b]/50"
-          />
-        )}
+  <div
+    className="absolute right-0 top-0 h-full 
+    w-24 sm:w-32 md:w-36 lg:w-40 
+    bg-linear-to-l 
+    dark:from-[#0b0b0b] dark:via-[#0b0b0b]/80 to-transparent 
+    pointer-events-none z-10 transition-opacity duration-500 
+    from-[#e8e6e3]/80 via-[#e8e6e3]/60
+    max-sm:via-[#e8e6e3]/40 max-sm:dark:via-[#0b0b0b]/40"
+  />
+)}
 
         <div
           className="flex items-center gap-1 snap-x space-x-4 overflow-x-hidden no-scrollbar z-10"
@@ -60,7 +71,7 @@ const JustRelease = () => {
                     <p className="dark:text-white text-black text-sm">
                       4.8{" "}
                       <span className="dark:text-gray-500">
-                        |Action . Movie
+                        | Action . Movie
                       </span>
                     </p>
                   </div>
