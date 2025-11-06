@@ -1,5 +1,6 @@
-import BrandStrip from '../Components/Home/BrandStrip';
-import HeroSlider from '../Components/Home/HeroSlider';
+import BrandStrip from '../Components/Sections/BrandStrip';
+import HeroSlider from '../Components/Hero/HeroSlider';
+import JustRelease from '../Components/Sections/JustRelease';
 
 const Home = () => {
 
@@ -7,6 +8,7 @@ const Home = () => {
     <>
     <HeroSlider/>
     <BrandStrip/>
+    <JustRelease/>
     </>
   )
 }

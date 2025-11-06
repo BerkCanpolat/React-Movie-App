@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { logoImage } from "../../constants/data";
 import { FaChevronRight,FaChevronLeft } from 'react-icons/fa6';
 import { useHorizontalScroll } from "../../Hook/useHorizontalScroll";
+import SliderBtn from "../Shared/SliderBtn";
 
 
 const BrandStrip = () => {
@@ -20,25 +21,15 @@ const BrandStrip = () => {
 )}
 
       
-      <div className="flex items-center gap-10 snap-x space-x-4 overflow-x-hidden no-scrollbar scroll-smooth" ref={ref}>
+      <div className="flex items-center max-sm:gap-0 sm:gap-10 snap-x space-x-4 overflow-x-hidden no-scrollbar scroll-smooth" ref={ref}>
 
 
         {canScrollLeft && (
-          <button
-            className="dark:bg-gray-800 bg-red-500 absolute left-5 top-18 rounded-full p-1.5 cursor-pointer z-20 transition-opacity duration-500"
-            onClick={() => scroll("left")}
-          >
-            <FaChevronLeft color="white" />
-          </button>
+          <SliderBtn children={<FaChevronLeft color="white" />} onClick={() => scroll("left")} className="left-5 top-18"/>
         )}
 
         {canScrollRight && (
-          <button
-            className="dark:bg-gray-800 bg-red-500 absolute right-5 top-18 rounded-full p-1.5 cursor-pointer z-20 transition-opacity duration-500"
-            onClick={() => scroll("right")}
-          >
-            <FaChevronRight color="white" />
-          </button>
+          <SliderBtn children={<FaChevronRight color="white" />} onClick={() => scroll("right")} className="right-5 top-18"/>
         )}
 
       {

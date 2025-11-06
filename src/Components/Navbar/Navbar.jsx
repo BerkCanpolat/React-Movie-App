@@ -26,6 +26,7 @@ const Navbar = () => {
       setOpenSearch(true);
     }
   };
+  
   return (
     <header className="flex items-center justify-between fixed top-0 left-0 w-full z-50 px-2 sm:px-4 md:px-8 lg:px-12 xl:px-16 bg-transparent text-black dark:text-white h-30 ">
       <img src={mainLogo} alt="mainLogo" className="w-28 sm:w-32" />
@@ -61,8 +62,6 @@ const Navbar = () => {
         <ThemeButton />
         <NavButton title="Sign Up" className="dark:bg-transparent hover:bg-black dark:border-white dark:text-white dark:hover:text-black dark:hover:bg-emerald-600"/>
         <NavButton title="Login" className="dark:bg-emerald-600 dark:border-emerald-600 hover:bg-transparent hover:text-white bg-black dark:text-white border-black"/>
-        {/* <NavButton title="Sign Up" className="bg-transparent hover:bg-emerald-600 dark:border-white dark:hover:text-white dark:hover:bg-black"/>
-        <NavButton title="Login" className="bg-emerald-600 border-emerald-600 hover:bg-transparent hover:text-white dark:bg-black dark:text-white dark:border-black"/> */}
       </div>
 
       <button className="z-20 sm:hidden" onClick={handleOpen}>
