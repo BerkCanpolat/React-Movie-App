@@ -42,11 +42,11 @@ const JustRelease = () => {
           ref={ref}
         >
           {canScrollRight && (
-            <SliderBtn children={ <FaChevronRight color="white" />} onClick={() => scroll("right")} className="right-5 top-1/2 -translate-y-1/2 sm:right-5"/>
+            <SliderBtn children={ <FaChevronRight color="white" />} onClick={() => scroll("right")} className="absolute right-5 top-1/2 -translate-y-1/2 sm:right-5"/>
           )}
 
           {canScrollLeft && (
-            <SliderBtn children={ <FaChevronLeft color="white" />} onClick={() => scroll("left")} className="left-11.5 top-1/2 -translate-y-1/2 sm:left-5"/>
+            <SliderBtn children={ <FaChevronLeft color="white" />} onClick={() => scroll("left")} className="absolute left-11.5 top-1/2 -translate-y-1/2 sm:left-5"/>
           )}
 
           {mockMovieImage.map((item, index) => (

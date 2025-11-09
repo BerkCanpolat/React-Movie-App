@@ -5,11 +5,13 @@ import { useState } from "react";
 import ThemeButton from "./ThemeButton";
 import NavButton from "./NavButton";
 import { navLinks } from "../../constants/data";
+import Modal from "./Modal";
 
 const Navbar = () => {
   const location = useLocation();
   const [openSideBar, setOpenSideBar] = useState(false);
   const [openSearch, setOpenSearch] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
 
   const handleOpen = () => {
     if (openSideBar) {
@@ -26,8 +28,9 @@ const Navbar = () => {
       setOpenSearch(true);
     }
   };
-  
+
   return (
+    <>
     <header className="flex items-center justify-between fixed top-0 left-0 w-full z-50 px-2 sm:px-4 md:px-8 lg:px-12 xl:px-16 bg-transparent text-black dark:text-white h-30 ">
       <img src={mainLogo} alt="mainLogo" className="w-28 sm:w-32" />
 
@@ -60,14 +63,17 @@ const Navbar = () => {
           className="cursor-pointer"
         />
         <ThemeButton />
-        <NavButton title="Sign Up" className="dark:bg-transparent hover:bg-black dark:border-white dark:text-white dark:hover:text-black dark:hover:bg-emerald-600"/>
-        <NavButton title="Login" className="dark:bg-emerald-600 dark:border-emerald-600 hover:bg-transparent hover:text-white bg-black dark:text-white border-black"/>
+        <NavButton title="Sign Up" className="dark:bg-transparent hover:bg-black dark:border-white dark:text-white dark:hover:text-black dark:hover:bg-emerald-600" onClick={() => setModalOpen(true)}/>
+        <NavButton title="Login" className="dark:bg-emerald-600 dark:border-emerald-600 hover:bg-transparent hover:text-white bg-black dark:text-white border-black" onClick={() => setModalOpen(true)}/>
       </div>
 
       <button className="z-20 sm:hidden" onClick={handleOpen}>
         <FaBarsStaggered size={25} className="cursor-pointer"/>
       </button>
     </header>
+    <Modal isOpen={modalOpen} onClose={() => setModalOpen(false)}/>
+    </>
+
   );
 };
 

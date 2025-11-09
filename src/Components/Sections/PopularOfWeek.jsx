@@ -40,11 +40,11 @@ const PopularOfWeek = () => {
 
         <div ref={ref} className="flex items-center snap-x gap-6 overflow-x-hidden no-scrollbar z-10">
             {canScrollRight && (
-            <SliderBtn children={ <FaChevronRight color="white" />} onClick={() => scroll("right")} className="right-5 top-1/2 -translate-y-1/2 sm:right-5"/>
+            <SliderBtn children={ <FaChevronRight color="white" />} onClick={() => scroll("right")} className="absolute right-5 top-1/2 -translate-y-1/2 sm:right-5"/>
           )}
 
           {canScrollLeft && (
-            <SliderBtn children={ <FaChevronLeft color="white" />} onClick={() => scroll("left")} className="left-11.5 top-1/2 -translate-y-1/2 sm:left-20 max-sm:left-5"/>
+            <SliderBtn children={ <FaChevronLeft color="white" />} onClick={() => scroll("left")} className="absolute left-11.5 top-1/2 -translate-y-1/2 sm:left-20 max-sm:left-5"/>
           )}
 
           {

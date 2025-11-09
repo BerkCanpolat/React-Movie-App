@@ -25,11 +25,11 @@ const BrandStrip = () => {
 
 
         {canScrollLeft && (
-          <SliderBtn children={<FaChevronLeft color="white" />} onClick={() => scroll("left")} className="left-5 top-18"/>
+          <SliderBtn children={<FaChevronLeft color="white" />} onClick={() => scroll("left")} className="absolute left-5 top-18"/>
         )}
 
         {canScrollRight && (
-          <SliderBtn children={<FaChevronRight color="white" />} onClick={() => scroll("right")} className="right-5 top-18"/>
+          <SliderBtn children={<FaChevronRight color="white" />} onClick={() => scroll("right")} className="absolute right-5 top-18"/>
         )}
 
       {
