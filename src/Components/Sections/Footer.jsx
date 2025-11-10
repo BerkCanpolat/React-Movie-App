@@ -21,16 +21,16 @@ const Footer = () => {
                 </div>
                 <div className="flex items-center gap-5 sm:gap-7 justify-end">
                     <a href="">
-                        <FaInstagram size={38} className="text-white hover:text-pink-600 transition-colors duration-300"/>
+                        <FaInstagram size={38} className="dark:text-white text-black hover:text-pink-600 transition-colors duration-300"/>
                     </a>
                     <a href="">
-                        <FaFacebookF size={38} className="text-white hover:text-blue-700 transition-colors duration-300"/>
+                        <FaFacebookF size={38} className="dark:text-white text-black hover:text-blue-700 transition-colors duration-300"/>
                     </a>
                     <a href="">
-                        <FaTwitter size={38} className="text-white hover:text-sky-600 transition-colors duration-300"/>
+                        <FaTwitter size={38} className="dark:text-white text-black hover:text-sky-600 transition-colors duration-300"/>
                     </a>
                     <a href="">
-                        <FaGoogle size={38} className="text-white hover:text-[#EA4335] transition-colors duration-300"/>
+                        <FaGoogle size={38} className="dark:text-white text-black hover:text-[#EA4335] transition-colors duration-300"/>
                     </a>
                 </div>
             </div>

@@ -6,28 +6,19 @@ import ThemeButton from "./ThemeButton";
 import NavButton from "./NavButton";
 import { navLinks } from "../../constants/data";
 import Modal from "./Modal";
+import { useAuth } from "../../Context/AuthContext";
+import { IoNotificationsOutline } from "react-icons/io5";
 
 const Navbar = () => {
   const location = useLocation();
   const [openSideBar, setOpenSideBar] = useState(false);
   const [openSearch, setOpenSearch] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
+  const [modalType, setModalType] = useState(null);
+  const { sessionId, logout, loading } = useAuth();
 
-  const handleOpen = () => {
-    if (openSideBar) {
-      setOpenSideBar(false);
-    } else {
-      setOpenSideBar(true);
-    }
-  };
-
-  const handleSearchOpen = () => {
-    if (openSearch) {
-      setOpenSearch(false);
-    } else {
-      setOpenSearch(true);
-    }
-  };
+  const handleOpen = () => setOpenSideBar(!openSideBar);
+  const handleSearchOpen = () => setOpenSearch(!openSearch);
 
   return (
     <>
@@ -63,15 +54,39 @@ const Navbar = () => {
           className="cursor-pointer"
         />
         <ThemeButton />
-        <NavButton title="Sign Up" className="dark:bg-transparent hover:bg-black dark:border-white dark:text-white dark:hover:text-black dark:hover:bg-emerald-600" onClick={() => setModalOpen(true)}/>
-        <NavButton title="Login" className="dark:bg-emerald-600 dark:border-emerald-600 hover:bg-transparent hover:text-white bg-black dark:text-white border-black" onClick={() => setModalOpen(true)}/>
+
+        {
+          sessionId ? (
+            <IoNotificationsOutline size={30} className="cursor-pointer"/>
+          ) : (
+            <NavButton title="Sign Up" className="dark:bg-transparent hover:bg-black dark:border-white dark:text-white dark:hover:text-black dark:hover:bg-emerald-600" onClick={() => {
+              logout;
+          setModalOpen(true);
+        }}/>
+            
+          )
+        }
+
+        {
+          sessionId ? (
+            <NavButton title={`${loading ? 'Logging out...' : 'Logout'}`} className="dark:bg-emerald-600 dark:border-emerald-600 hover:bg-transparent hover:text-white bg-black dark:text-white border-black" onClick={logout} disabled={loading}/>
+          ) : (
+            <NavButton title="Login" className="dark:bg-emerald-600 dark:border-emerald-600 hover:bg-transparent hover:text-white bg-black dark:text-white border-black" onClick={() => {
+              setModalOpen(true);
+            }}/>
+            
+          )
+        }
       </div>
 
       <button className="z-20 sm:hidden" onClick={handleOpen}>
         <FaBarsStaggered size={25} className="cursor-pointer"/>
       </button>
     </header>
-    <Modal isOpen={modalOpen} onClose={() => setModalOpen(false)}/>
+    {
+      modalOpen &&
+    <Modal onClose={() => setModalOpen(false)} type={modalType} setType={setModalType}/>
+    }
     </>
 
   );

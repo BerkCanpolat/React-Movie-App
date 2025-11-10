@@ -33,6 +33,8 @@ import netflixPng from "./logo18.png";
 import netflixSvg from "./logo19.svg";
 import netflixWebp from "./logo20.webp";
 
+import mainLogo from "./mainlogo.png";
+
 //Mock Bg
 import bg1 from "./bg1.png";
 import bg2 from "./bg2.png";
@@ -109,6 +111,8 @@ export {
 
     amazonPrime,
     hulu,
-    warnerBros
+    warnerBros,
+
+    mainLogo
 
 }

@@ -5,6 +5,8 @@ import Discover from "./Pages/Discover"
 import MovieRelease from "./Pages/MovieRelease"
 import Forum from "./Pages/Forum"
 import About from "./Pages/About"
+import { AuthProvider } from "./Context/AuthContext"
+import ApprovedPage from "./Pages/Approved"
 
 const routes = createBrowserRouter([
   {
@@ -16,6 +18,7 @@ const routes = createBrowserRouter([
       {path: "/movie-release", element: <MovieRelease/>},
       {path: "/forum", element: <Forum/>},
       {path: "/about", element: <About/>},
+      {path:"/approved", element: <ApprovedPage />}
     ],
   },
 ]);
@@ -23,7 +26,12 @@ const routes = createBrowserRouter([
 
 function App() {
 
-  return <RouterProvider router={routes}/>
+  return (
+    <AuthProvider>
+      <RouterProvider router={routes}/>
+    </AuthProvider> 
+    
+  )
 }
 
 export default App
