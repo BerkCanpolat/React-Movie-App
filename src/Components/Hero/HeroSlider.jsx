@@ -1,35 +1,67 @@
-import { FaCirclePlay, FaRegBookmark } from "react-icons/fa6";
+import { FaCirclePlay, FaBookmark } from "react-icons/fa6";
+import { BsBookmarkPlus } from "react-icons/bs";
 import CustomButton from "../Shared/CustomButton";
 import { useEffect, useState } from "react";
-import { heroMock } from "../../constants/data";
+import { getImageUrl } from "../../Services/api";
+import { useMovie } from "../../Context/MoviesContext";
+import { useAuth } from "../../Context/AuthContext";
+import { useModal } from "../../Context/ModalContext";
+import { Link } from "react-router-dom";
 
-const HeroSlider = () => {
+const HeroSlider = ({ popular, genreMap }) => {
+  const { addToWatchlist, removeFromWatchlist, watchlist } = useMovie();
+  const { sessionId } = useAuth();
+  const { openModal } = useModal();
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
 
-  const mockMovie = heroMock.slice(0, 5);
+  const popularMovie = popular.slice(0, 5) || [];
 
   useEffect(() => {
     const interval = setInterval(() => {
       setIsTransitioning(true);
       setTimeout(() => {
-        setCurrentSlide((prev) => (prev + 1) % mockMovie.length);
+        setCurrentSlide((prev) => (prev + 1) % popularMovie.length);
         setIsTransitioning(false);
       }, 500);
     }, 8000);
 
     return () => clearInterval(interval);
-  }, [mockMovie.length]);
+  }, [popularMovie.length]);
 
-  const currentMockMovie = mockMovie[currentSlide];
+  const currentPopularMovie = popularMovie[currentSlide];
+
+  const isInWatchlist = currentPopularMovie
+    ? watchlist.some((m) => m.id === currentPopularMovie.id)
+    : false;
+
+  const handleWatchlistClick = () => {
+    if (!sessionId) {
+      openModal("login");
+      return;
+    }
+    isInWatchlist
+      ? removeFromWatchlist(currentPopularMovie.id)
+      : addToWatchlist(currentPopularMovie.id);
+  };
+
+  if (!currentPopularMovie) return null;
+
+  const formatRating = (rating) => {
+    return (Math.round(rating * 10) / 10).toFixed(1);
+  };
 
   return (
-    <div className="h-screen relative w-full overflow-hidden">
+    <div className="h-[650px] sm:h-screen relative w-full overflow-hidden">
       <div
         className={`text-white bg-cover bg-center flex items-center justify-center absolute inset-0 transition-all duration-1200 ease-in-out transform ${
           isTransitioning ? "opacity-0 scale-105" : "opacity-100 scale-100"
         }`}
-        style={{ backgroundImage: `url(${currentMockMovie.bg})` }}
+        style={{
+          backgroundImage: `url(${getImageUrl(
+            currentPopularMovie.backdrop_path
+          )})`,
+        }}
       >
         <div className="absolute inset-0 bg-linear-to-b dark:from-black/25 via-transparent to-transparent z-0 from-[#e8e6e3]/20" />
 
@@ -40,43 +72,66 @@ const HeroSlider = () => {
 
       <div className="absolute inset-0 flex items-center px-2 sm:px-4 md:px-8 lg:px-12 xl:px-16">
         <div className="flex flex-col justify-between w-full md:flex-row md:items-end max-md:gap-25">
-          <div className="flex flex-col gap-4">
-            <div className="pb-5.5">
-              <p className="bg-black text-white max-w-17 text-center rounded-full text-xs py-1.5">
-                Movie
-              </p>
-            </div>
-            <h1 className="text-5xl text-white font-bold max-md:text-2xl">
-              Star Wars: The force Awaken
-            </h1>
-            <p className="text-gray-400 text-xs">
-              2h40m . 2022 . Fantasy . Actions
-            </p>
-            <p className="text-white text-sm max-w-170 max-md:text-xs">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure
-              possimus impedit magni aperiam placeat ducimus ipsam consequuntur.
-              Accusamus tempore quis quas, voluptatem qui officiis nobis nisi
-              reprehenderit minus, nihil aspernatur! Lorem ipsum dolor sit amet
-              consectetur adipisicing elit. Eum quis, optio eius ab quaerat
-              placeat exercitationem voluptas. Dolores, deserunt deleniti,
-              nostrum aut adipisci accusantium molestiae facilis, ad nam error
-              maxime.
-            </p>
-            <div className="flex items-center gap-6.5 mt-6">
-              <CustomButton
-                icon={<FaCirclePlay size={20} />}
-                title="Watch Trailer"
-                className="bg-emerald-600 k:border-emerald-500"
-              />
-              <CustomButton
-                icon={<FaRegBookmark size={20} />}
-                title="Add Watchlist"
-              />
-            </div>
-          </div>
+          {currentPopularMovie && (
+            <div className="flex flex-col gap-4">
+              <div className="pb-5.5">
+                <p className="bg-black text-white max-w-17 text-center rounded-full text-xs py-1.5">
+                  Movie
+                </p>
+              </div>
+              <h1 className="text-5xl text-white font-bold max-md:text-2xl">
+                {currentPopularMovie.title}
+              </h1>
+              <p className="text-gray-400 text-xs">
+                {`${currentPopularMovie.release_date?.slice(0, 4)} `}
 
-          <div className="flex items-center gap-1.5">
-            {mockMovie.map((_, index) => (
+                {currentPopularMovie.genre_ids &&
+                  currentPopularMovie.genre_ids.length > 0 && (
+                    <span>
+                      {" | "}
+                      {currentPopularMovie.genre_ids
+                        .map((id) => genreMap[id])
+                        .filter(Boolean)
+                        .join(", ")}
+                    </span>
+                  )}
+              </p>
+              <p className="text-white text-sm max-w-170 max-md:text-xs">
+                {currentPopularMovie.overview}
+              </p>
+              <div className="flex items-center gap-6.5 mt-6">
+                <Link to={`/trailer/${currentPopularMovie.id}`}>
+                  <CustomButton
+                    icon={<FaCirclePlay size={20} />}
+                    title="Watch Trailer"
+                    className="bg-emerald-600 k:border-emerald-500 text-white w-38 h-10 sm:w-40 sm:h-12"
+                  />
+                </Link>
+
+                {sessionId ? (
+                  <CustomButton
+                    icon={<BsBookmarkPlus size={20} />}
+                    title="Add Watchlist"
+                    activeIcon={<FaBookmark size={20} color="white" />}
+                    activeTitle="Remove Watchlist"
+                    isActive={isInWatchlist}
+                    onClick={handleWatchlistClick}
+                    className="w-45 h-10 sm:w-50 sm:h-12"
+                  />
+                ) : (
+                  <CustomButton
+                    icon={<BsBookmarkPlus size={20} />}
+                    title="Add Watchlist"
+                    className="text-white w-42.5 h-10 sm:w-45.5 sm:h-12"
+                    onClick={handleWatchlistClick}
+                  />
+                )}
+              </div>
+            </div>
+          )}
+
+          <div className="flex items-center justify-center gap-1.5 z-20">
+            {popularMovie.map((_, index) => (
               <button
                 key={index}
                 onClick={() => setCurrentSlide(index)}

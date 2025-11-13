@@ -19,7 +19,7 @@ const ApprovedPage = () => {
 
   return (
     <div className="flex items-center justify-center h-screen">
-      <p className="text-lg font-semibold text-white">TMDb doğrulaması tamamlanıyor...</p>
+      <p className="text-lg font-semibold text-white">TMDb verification is complete...</p>
     </div>
   );
 };

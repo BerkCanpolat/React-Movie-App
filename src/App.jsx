@@ -5,8 +5,9 @@ import Discover from "./Pages/Discover"
 import MovieRelease from "./Pages/MovieRelease"
 import Forum from "./Pages/Forum"
 import About from "./Pages/About"
-import { AuthProvider } from "./Context/AuthContext"
 import ApprovedPage from "./Pages/Approved"
+import Details from "./Pages/Details"
+import TrailerPage from "./Pages/Trailer"
 
 const routes = createBrowserRouter([
   {
@@ -18,7 +19,9 @@ const routes = createBrowserRouter([
       {path: "/movie-release", element: <MovieRelease/>},
       {path: "/forum", element: <Forum/>},
       {path: "/about", element: <About/>},
-      {path:"/approved", element: <ApprovedPage />}
+      {path:"/approved", element: <ApprovedPage />},
+      {path:"/movie/:id", element: <Details />},
+      {path:"/trailer/:id", element: <TrailerPage />},
     ],
   },
 ]);
@@ -27,9 +30,7 @@ const routes = createBrowserRouter([
 function App() {
 
   return (
-    <AuthProvider>
       <RouterProvider router={routes}/>
-    </AuthProvider> 
     
   )
 }

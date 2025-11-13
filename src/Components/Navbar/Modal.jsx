@@ -1,9 +1,6 @@
 import { useState } from "react";
-import { mainLogo } from "../../assets/image";
-import { FaRegEye, FaRegEyeSlash } from "react-icons/fa6";
 import useInput from "../../Hook/useInput";
 import { hasMinLength, isEmail, isNotEmpty } from "../../utils/validation";
-import Input from "./Input";
 import { useAuth } from "../../Context/AuthContext";
 
 const Modal = ({ onClose, type, setType }) => {

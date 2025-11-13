@@ -10,6 +10,10 @@ export const AuthProvider = ({ children }) => {
 
   const TMDB_API_KEY = import.meta.env.VITE_TMDB_API_KEY;
 
+  useEffect(() => {
+    console.log("AuthContext sessionId:", sessionId);
+}, [sessionId]);
+
   const createRequestToken = async () => {
     const res = await fetch(`https://api.themoviedb.org/3/authentication/token/new?api_key=${TMDB_API_KEY}`);
     const data = await res.json();
@@ -30,6 +34,8 @@ export const AuthProvider = ({ children }) => {
       body: JSON.stringify({ request_token: approvedToken }),
     });
     const data = await res.json();
+    console.log(res);
+    console.log(sessionId);
     setLoading(false);
     if (data.success) {
       localStorage.setItem("session_id", data.session_id);

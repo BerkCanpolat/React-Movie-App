@@ -1,24 +1,20 @@
-import SliderBtn from "../Shared/SliderBtn"
+import SliderBtn from "../Shared/SliderBtn";
 import { FaChevronRight, FaChevronLeft } from "react-icons/fa6";
 import { FaStar } from "react-icons/fa6";
-import { FaCirclePlay, FaRegBookmark } from "react-icons/fa6";
 import { useHorizontalScroll } from "../../Hook/useHorizontalScroll";
-import { mockMovieImage } from "../../constants/data";
 import { useState } from "react";
-import { AnimatePresence } from "framer-motion";
-import { motion } from "framer-motion";
+import { getImageUrl } from "../../Services/api";
+import { Link } from "react-router-dom";
 
-
-const Live = () => {
-
-    const { ref, canScrollLeft, canScrollRight, scroll } = useHorizontalScroll();
+const Live = ({ justRelease, genreMap }) => {
+  const { ref, scroll } = useHorizontalScroll();
 
   const visibleCount = 4;
   const [startIndex, setStartIndex] = useState(0);
 
   const movieBlocks = [];
-  for (let i = 0; i < mockMovieImage.length; i += visibleCount) {
-    movieBlocks.push(mockMovieImage.slice(i, i + visibleCount));
+  for (let i = 0; i < justRelease.length; i += visibleCount) {
+    movieBlocks.push(justRelease.slice(i, i + visibleCount));
   }
 
   const handleScroll = (direction) => {
@@ -32,64 +28,80 @@ const Live = () => {
 
   const visibleMovies = movieBlocks[startIndex] || [];
 
+  const formatRating = (rating) => {
+    return (Math.round(rating * 10) / 10).toFixed(1);
+  };
 
   return (
-    <div className="w-full text-white sm:flex-1/6 sm:mb-10">
-        <div className="flex items-center justify-between w-full mb-5">
-        <h1 className="dark:text-white text-black text-3xl">
-        Live
-      </h1>
+    <div className="w-full text-white sm:flex-1/6 mb-10">
+      <div className="flex items-center justify-between w-full mb-5">
+        <h1 className="dark:text-white text-black text-3xl">Live</h1>
 
-      <div className="flex items-center gap-3.5">
-            <SliderBtn children={ <FaChevronLeft color="white" />} onClick={() => handleScroll("left")}/>
-            <SliderBtn children={ <FaChevronRight color="white" />} onClick={() => handleScroll("right")}/>
-
-      </div>
+        <div className="flex items-center gap-3.5">
+          <SliderBtn
+            children={<FaChevronLeft color="white" />}
+            onClick={() => handleScroll("left")}
+          />
+          <SliderBtn
+            children={<FaChevronRight color="white" />}
+            onClick={() => handleScroll("right")}
+          />
         </div>
+      </div>
 
-        <div
-        ref={ref} className="flex flex-col gap-6 snap-x overflow-x-hidden no-scrollbar z-10 scroll-smooth snap-mandatory" >
-            {visibleMovies.map((item, index) => (
-          <div
+      <div
+        ref={ref}
+        className="flex flex-col gap-6 snap-y overflow-x-hidden z-10 scroll-smooth"
+      >
+        {visibleMovies.map((item, index) => (
+          <Link
+            to={`/movie/${item.id}`}
             key={index}
-            className="flex gap-4 cursor-pointer bg-transparent w-[255px] sm:w-full"
+            className="flex gap-4 cursor-pointer bg-transparent w-[310px] sm:w-full"
           >
-            <div className="h-full sm:h-40">
+            <div className={`h-full sm:h-40`}>
               <img
-                src={item.mockImg}
+                src={getImageUrl(item.poster_path)}
                 alt="mock"
                 className="w-full h-full rounded-2xl"
               />
             </div>
 
             <div className="flex flex-col items-start gap-3 w-[500px] sm:gap-4 sm:w-[150px] h-full">
-              <p className="bg-transparent dark:text-gray-300 dark:border dark:border-gray-400 text-gray-800 border-gray-800 text-xs text-center mb-2.5 p-1 sm:p-1.5 rounded uppercase">
+              <p className="bg-transparent dark:text-gray-300 border dark:border-gray-400 text-gray-800 border-gray-800 text-xs text-center mb-2.5 p-1 sm:p-1.5 rounded uppercase">
                 pg-13
               </p>
-              <h4 className="dark:text-white text-black text-xs sm:text-sm mb-1.5 sm:mb-0">
+              <h4 className="dark:text-white text-black text-xs sm:text-sm mb-1.5 sm:mb-0 truncate w-50 overflow-hidden">
                 {item.title || "The Last Of Us"}
               </h4>
-              <p className="dark:text-gray-600 text-black text-xs sm:text-sm">
-                {item.genre || "Horror . Thriller"}
-              </p>
+              {item.genre_ids && item.genre_ids.length > 0 && (
+                <span className="dark:text-gray-600 text-black text-xs sm:text-sm truncate overflow-hidden w-50">
+                  {" | "}
+                  {item.genre_ids
+                    .slice(0, 2)
+                    .map((id) => genreMap[id])
+                    .filter(Boolean)
+                    .join(", ")}
+                </span>
+              )}
               <div className="flex items-center gap-2.5 text-xs sm:text-sm">
                 <FaStar size={17} color="yellow" />
                 <p>
                   <span className="dark:text-white text-black font-medium">
-                    {item.rating || "4.3"}
-                  </span>{" "}
-                  <span className="dark:text-gray-600 text-black">| Movie</span>
+                    {formatRating(item.vote_average) || "4.3"}
+                  </span>
+                  <span className="dark:text-gray-600 text-black">
+                    {" "}
+                    | Movie
+                  </span>
                 </p>
               </div>
             </div>
-          </div>
+          </Link>
         ))}
-
-        </div>
-
-
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default Live
+export default Live;
