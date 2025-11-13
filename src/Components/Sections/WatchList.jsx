@@ -77,7 +77,11 @@ const WatchList = ({ watchlist, genreMap, removeFromWatchlist }) => {
                   />
                   <div
                     className="absolute top-3 right-3 bg-red-600/70 rounded-full p-1.5 hover:scale-110 transition-transform cursor-pointer"
-                    onClick={() => removeFromWatchlist(item.id)}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      e.preventDefault();
+                      removeFromWatchlist(item.id);
+                    }}
                   >
                     <CiBookmarkMinus size={30} color="white" />
                   </div>

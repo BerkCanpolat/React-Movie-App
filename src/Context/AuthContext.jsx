@@ -19,11 +19,17 @@ export const AuthProvider = ({ children }) => {
     return data.request_token;
   };
 
-  const redirectToTMDB = async () => {
-    const token = await createRequestToken();
-    const redirectURL = `${window.location.origin}/approved?request_token=${token}`;
-    window.location.href = `https://www.themoviedb.org/authenticate/${token}?redirect_to=${redirectURL}`;
-  };
+const redirectToTMDB = async () => {
+  const token = await createRequestToken();
+
+  const redirectURL =
+    import.meta.env.MODE === "development"
+      ? `http://localhost:5173/approved?request_token=${token}`
+      : `https://saintstreamwatch.netlify.app/approved?request_token=${token}`;
+
+  window.location.href = `https://www.themoviedb.org/authenticate/${token}?redirect_to=${redirectURL}`;
+};
+
 
   const createSession = async (approvedToken) => {
     setLoading(true);
