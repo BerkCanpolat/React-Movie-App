@@ -27,12 +27,21 @@ const Home = () => {
     watchlist,
     removeFromWatchlist,
     loadingMovie,
+    error
   } = useMovie();
   const { sessionId } = useAuth();
 
   if (loadingMovie) {
     return <HomeSkeleton />;
   }
+
+  if (error) {
+    return (
+        <div className="w-full text-center text-red-500 mt-20">
+            {error}
+        </div>
+    );
+}
 
   return (
     <>

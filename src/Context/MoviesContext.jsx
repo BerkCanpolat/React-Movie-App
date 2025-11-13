@@ -31,12 +31,15 @@ export const MovieProvider = ({ children }) => {
     const [fastMovie, setFastMovie] = useState([]);
     const [loadingMovie, setLoadingMovie] = useState(false);
     const [selectedMovieId, setSelectedMovieId] = useState(null);
+    const [error, setError] = useState(null);
+
 
     const [movieCredits, setMovieCredits] = useState({ cast: [], crew: [] });
 
     useEffect(() => {
         const fetchAllMovies = async() => {
             setLoadingMovie(true);
+            setError(null);
             try {
                 const [justReleaseData, genreData, trendData, popularData, upcomingData, tvPopularData, koreanSeriesData, topRatedData, fastMovieData] = await Promise.all([
                     fetchJustRelease(),
@@ -61,6 +64,7 @@ export const MovieProvider = ({ children }) => {
                 setFastMovie(fastMovieData);
             } catch (error) {
                 console.log("Film verileri alınamadı:", error);
+                setError("Film verileri yüklenirken bir hata oluştu. Lütfen sayfayı yenileyin.");
             } finally {
                 setLoadingMovie(false);
             }
@@ -79,7 +83,6 @@ export const MovieProvider = ({ children }) => {
         const loadWatchlist = async () => {
             if (!sessionId) return;
             const data = await fetchWatchlist(sessionId);
-            console.log("Watchlist fetch:", data);
             setWatchlist(data);
         };
         loadWatchlist();
@@ -91,7 +94,6 @@ export const MovieProvider = ({ children }) => {
             return;
         }
         const res = await toggleWatchlist(sessionId, movieId, true);
-        console.log("Add response:", res);
         if (res.success) {
             const updated = await fetchWatchlist(sessionId);
             setWatchlist(updated);
@@ -127,7 +129,7 @@ export const MovieProvider = ({ children }) => {
 
 
     return (
-        <MoviesContext.Provider value={{justRelease, genreMap, trend, popular, upcoming, tvPopular, korenSeries, topRated, fastMovie, genre, watchlist, addToWatchlist, removeFromWatchlist, openMoviesDetails, loadMovieCredits, movieCredits, loadingMovie}}>
+        <MoviesContext.Provider value={{justRelease, genreMap, trend, popular, upcoming, tvPopular, korenSeries, topRated, fastMovie, genre, watchlist, addToWatchlist, removeFromWatchlist, openMoviesDetails, loadMovieCredits, movieCredits, error, loadingMovie}}>
             { children }
         </MoviesContext.Provider>
     )

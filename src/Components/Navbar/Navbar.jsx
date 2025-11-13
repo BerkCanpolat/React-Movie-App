@@ -137,7 +137,16 @@ const Navbar = () => {
               <ul className="divide-y divide-neutral-700">
                 {searchResult.map((item, index) => {
                   return (
-                    <li key={index} className="hover:bg-neutral-700">
+                    <Link
+                      to={`/movie/${item.id}`}
+                      key={index}
+                      className="hover:bg-neutral-700"
+                      onClick={() => {
+                        setShowSearchResult(false);
+                        setOpenSearch(false);
+                        setSearchQuery("");
+                      }}
+                    >
                       <button className="flex items-center p-3 w-full text-left">
                         <div className="w-10 h-10 bg-neutral-700 rounded  shrink-0 overflow-hidden">
                           <img
@@ -160,7 +169,7 @@ const Navbar = () => {
                           </p>
                         </div>
                       </button>
-                    </li>
+                    </Link>
                   );
                 })}
               </ul>

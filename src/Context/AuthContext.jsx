@@ -11,7 +11,6 @@ export const AuthProvider = ({ children }) => {
   const TMDB_API_KEY = import.meta.env.VITE_TMDB_API_KEY;
 
   useEffect(() => {
-    console.log("AuthContext sessionId:", sessionId);
 }, [sessionId]);
 
   const createRequestToken = async () => {
@@ -34,8 +33,6 @@ export const AuthProvider = ({ children }) => {
       body: JSON.stringify({ request_token: approvedToken }),
     });
     const data = await res.json();
-    console.log(res);
-    console.log(sessionId);
     setLoading(false);
     if (data.success) {
       localStorage.setItem("session_id", data.session_id);
@@ -57,7 +54,6 @@ export const AuthProvider = ({ children }) => {
     });
 
     const data = await res.json();
-    console.log("Logout response:", data);
 
     localStorage.removeItem("session_id");
     setSessionId(null);
