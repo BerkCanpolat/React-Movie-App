@@ -1,5 +1,63 @@
 # Saintstream 🎬
 
+# ENG #
+
+StreamMovie is a fully mobile-responsive movie discovery and management application built with React. This project was created to improve my skills and uses the TMDb API to display dynamic movie data.
+
+## Features
+
+- Multi-Page Structure: Includes Detail and Discover pages for enhanced user experience.
+
+- Movie Search: Users can search movies by title and view results.
+
+- Movies by Category: Filter and view movies by specific categories.
+
+- Custom Slider: Instead of using a ready-made package, a custom slider was developed to browse movies.
+
+- Dynamic Background: The background image automatically changes based on the currently selected movie in the slider.
+
+- Watchlist Management: Users can add or remove movies from their watchlist.
+
+- Login Requirement: Adding movies to the watchlist requires user login. If not logged in, a modal prompts the user to log in securely via TMDb.
+
+- TMDb OAuth Integration: Users are redirected to the TMDb site for authentication and return to the app to manage their watchlist.
+
+- Theme Support: Light and dark theme options are available.
+
+- Mobile & Desktop Friendly: Fully responsive design ensures smooth usage across all devices.
+
+- Context API & Service Layer: API operations are handled via a service layer and global state is managed using Context API.
+
+- Tailwind CSS: Modern and fast UI styling is implemented using Tailwind CSS.
+
+Technologies Used
+
+React
+
+Tailwind CSS
+
+React Router DOM
+
+Context API
+
+TMDb API
+
+JavaScript (ES6+)
+
+🔗 Live Demo: https://saintstreamwatch.netlify.app
+
+🎨 Design Reference: https://www.figma.com/community/file/1240798278313263254/saintstream-movie-streaming-website
+
+Contribution
+
+This project is a personal learning and development project.
+Feel free to explore, get ideas, or use it as a reference in your own projects.
+
+
+
+
+# TR #
+
 **StreamMovie**, React ile geliştirilmiş, tamamen mobil uyumlu bir film keşif ve yönetim uygulamasıdır. Bu proje, kendi yeteneklerimi geliştirmek amacıyla hazırlandı ve TMDb API kullanılarak dinamik film verilerini gösterir.  
 
 ---
@@ -36,10 +94,6 @@ TMDb API
 JavaScript (ES6+)
 
 ----------------------
-
-Canlı Demo -> https://saintstreamwatch.netlify.app
-
-Projede kullanılan tasarım -> https://www.figma.com/community/file/1240798278313263254/saintstream-movie-streaming-website
 
 🔗 **Canlı Demo:** https://saintstreamwatch.netlify.app
 
