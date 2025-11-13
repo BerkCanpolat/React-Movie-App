@@ -106,3 +106,38 @@ Katkı
 
 Bu proje kişisel bir öğrenme ve geliştirme projesidir.
 Projeyi inceleyebilir, fikir alabilir veya kendi projelerinde referans olarak kullanabilirsiniz.
+
+
+
+
+
+
+https://github.com/user-attachments/assets/d6283644-6e95-45de-a250-163e49a5f0c9
+
+
+
+
+https://github.com/user-attachments/assets/10917be2-7186-4d29-abd0-f480bc286983
+
+
+
+
+https://github.com/user-attachments/assets/8d51743e-a461-445d-a912-cf6bfb2bab41
+
+
+
+
+https://github.com/user-attachments/assets/fa7678c1-375e-4f43-b670-e3e4b1248a83
+
+
+
+
+
+https://github.com/user-attachments/assets/118bfe36-0ddf-4f3f-95d9-9b458fc6155f
+
+
+
+
+
+
+
