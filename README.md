@@ -1,16 +1,54 @@
-# React + Vite
+# Saintstream 🎬
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**StreamMovie**, React ile geliştirilmiş, tamamen mobil uyumlu bir film keşif ve yönetim uygulamasıdır. Bu proje, kendi yeteneklerimi geliştirmek amacıyla hazırlandı ve TMDb API kullanılarak dinamik film verilerini gösterir.  
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Özellikler
 
-## React Compiler
+- **Çoklu Sayfa Yapısı**: Detay ve Discover sayfaları ile kullanıcı deneyimi artırıldı.
+- **Film Arama**: Kullanıcılar film adıyla arama yapabilir ve sonuçları görebilir.
+- **Kategoriye Göre Filmler**: Filmleri kategorilere göre filtreleyip görebilirsiniz.
+- **Kendi Slider'ını Yazdım**: Slider için hazır bir paket yerine, filmleri kaydırmak için kendi custom slider'ımı geliştirdim.
+- **Dinamik Arka Plan**: Slider üzerinde gezinirken seçilen filme göre arka plan resmi otomatik olarak değişiyor.
+- **Watchlist Yönetimi**: Kullanıcılar beğendikleri filmleri watchlist’e ekleyebilir veya çıkartabilir.
+- **Giriş Zorunluluğu**: Watchlist’e film eklemek için kullanıcı giriş yapmalıdır. Giriş yapılmadığında modal açılır ve kullanıcı TMDb üzerinden güvenli bir şekilde giriş yapar.
+- **TMDb OAuth Entegrasyonu**: Giriş sırasında kullanıcı TMDb sitesine yönlendirilir, onay verir ve geri dönerek watchlist işlemlerini yapabilir.
+- **Tema Desteği**: Açık ve karanlık tema seçenekleri mevcuttur.
+- **Mobil ve Masaüstü Uyumlu**: Tamamen responsive tasarım ile her cihazda sorunsuz kullanım.
+- **Context API ve Servis Katmanı**: API işlemleri için servis yazıldı ve Context API ile global state yönetimi sağlandı.
+- **Tailwind CSS Kullanımı**: Modern ve hızlı UI tasarımı için Tailwind CSS tercih edildi.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+Kullanılan Teknolojiler
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+React
+
+Tailwind CSS
+
+React Router DOM
+
+Context API
+
+TMDb API
+
+JavaScript (ES6+)
+
+----------------------
+
+Canlı Demo -> https://saintstreamwatch.netlify.app
+
+Projede kullanılan tasarım -> https://www.figma.com/community/file/1240798278313263254/saintstream-movie-streaming-website
+
+🔗 **Canlı Demo:** https://saintstreamwatch.netlify.app
+
+🎨 **Tasarım Referansı:** [Figma Tasarımı] https://www.figma.com/community/file/1240798278313263254/saintstream-movie-streaming-website
+
+
+-------
+
+Katkı
+
+Bu proje kişisel bir öğrenme ve geliştirme projesidir.
+Projeyi inceleyebilir, fikir alabilir veya kendi projelerinde referans olarak kullanabilirsiniz.
